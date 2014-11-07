@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fg-FG">
+    <head>
+        <meta  charset="utf-8"/>
+        <title>{% block title %}Home{% endblock%}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet" href="{{STATIC_URL}}css/style.css">
+            
+        <link rel="stylesheet" href="{{STATIC_URL}}css/bootstrap.min.css">
+        
+        <script src="{{STATIC_URL}}js/jquery.min.js"></script>
+        <script src="{{STATIC_URL}}js/base.js"></script>
+        
+        <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>  
+        
+    </head>
+    <body>
+       
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Wasé hó</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/index/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Category<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+       <!--     <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+            {% block mylist %}
+                
+                {% if categorias%}
+                {% for cat in categorias %}
+                    <li><a href="/{{cat.nom}}/">{{cat.nom}}</a></li>
+                {% endfor %}
+            {% else %}
+                 <li><a href="#">None</a></li>
+            {% endif %}
+            {% endblock %}
+            
+          </ul>
+        </li>
+      </ul>
+      
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" id="search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <button class="btn btn-default navbar-btn" id="login"><a href="#">Login</a></button>
+        <button class="btn btn-default navbar-btn" id="register"><a href="#">Register</a></button>
+        
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+   
+      {% block content %}
+          
+          {% endblock%}
+    
+      
+    
+      
+    
+    <div class="navbar navbar-default navbar-fixed">
+	<div class="container">
+            <center><p class="navbar-text pull-center">By Maur</center>
+    </div>
+    
+       
+        
+   
+      
+      
+    
+    </body>
+</html>
